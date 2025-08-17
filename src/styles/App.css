@@ -1,0 +1,32 @@
+html{
+  height: 100%;
+  font-family: 'Hanken Grotesk', sans-serif;
+}
+
+body{
+  height: 100%;
+  background-color: #282726;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+header h1{
+  margin-top: 0;
+  color: white;
+  font-weight: 300;
+  font-size: 1.5rem;
+  
+}
+
+header p{
+  margin: 0;
+  color: #8E8E8E;
+  font-size: 1rem;
+  max-width: 425px;
+}
+
+header{
+  margin-top: 5vh;
+  text-align: center;
+}
