@@ -76,8 +76,12 @@ header{
   color: #F9F4DA;
   font-weight: 600;
   font-size: 1.125rem;
-  padding: 10px 15px;
+  width: 60px;
+  height: 60px;
   border-bottom: solid #F9F4DA;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .keyboardContainer{
@@ -104,4 +108,11 @@ main{
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.correctGuess{
+  background-color: #10A95B;
+}
+.incorrectGuess{
+  background-color: #EC5D49;
 }

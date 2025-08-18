@@ -3,15 +3,31 @@ import { languages } from './languages'
 import Chips from './components/chips'
 import './styles/App.css'
 import type {JSX} from 'react'
-// test commitx
+import { clsx } from 'clsx'
 function App() {
-  const [langaugeChips, setLanguageChips] = useState<JSX.Element[]>(languages.map(language => (
-  <Chips key={language.name} name={language.name} color={language.color} backgroundColor={language.backgroundColor}/>
-  )))
+  const languageChips = languages.map(language => <Chips key={language.name} name={language.name} color={language.color} backgroundColor={language.backgroundColor}/>)
   const [currentWord, setCurrentWord] = useState<string>('react')
-  const letterElements = currentWord.split('').map(letter => <span>{letter.toUpperCase()}</span>)
   const alphapbet = "abcdefghijklmnopqrstuvwxyz"
-  const keyboardButtonElements = alphapbet.split('').map(letter => <button key={letter}className='keyboardButton'>{letter.toUpperCase()}</button>)
+  const [guessedLetters, setGuessedLetters] = useState<string[]>([])
+  const letterElements = currentWord.split('').map(letter => <span key={letter}>{guessedLetters.includes(letter) ? letter.toUpperCase() : ''}</span>)
+  // Function to handle the clicking of keyboard buttons (by updating the guessedLetters states)
+  // Note that this function is called by an inline event listener within the JSX return,
+  // avoiding the need to type the event and use its currentTarget.
+  function handleKeyboardClick(buttonValue: string):void{
+    setGuessedLetters(prevLetters => prevLetters.includes(buttonValue) ? prevLetters: [...prevLetters, buttonValue])
+  }
+  const keyboardButtonElements = alphapbet.split('').map(letter => {
+    const isGuessed = guessedLetters.includes(letter)
+    const isCorrect = isGuessed && currentWord.includes(letter)
+    const isIncorrect = isGuessed && !currentWord.includes(letter)
+    const classes = clsx('keyboardButton', isCorrect && 'correctGuess', isIncorrect && 'incorrectGuess')
+    return (
+    <button onClick={() => handleKeyboardClick(letter)} 
+            key={letter} 
+            className={classes}>
+              {letter.toUpperCase()}
+            </button>)
+          })
   return (
     <main>
       <header>
@@ -23,7 +39,7 @@ function App() {
         <h2>Well Done! 🎉</h2>
       </section>
       <section className='chipsContainer'>
-        {langaugeChips}
+        {languageChips}
       </section>
       <section className='letterElementsContainer'>
         {letterElements}
