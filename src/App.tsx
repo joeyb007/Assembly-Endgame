@@ -3,7 +3,7 @@ import { languages } from './languages'
 import Chips from './components/chips'
 import './styles/App.css'
 import type {JSX} from 'react'
-
+// test commitx
 function App() {
   const [langaugeChips, setLanguageChips] = useState<JSX.Element[]>(languages.map(language => (
   <Chips key={language.name} name={language.name} color={language.color} backgroundColor={language.backgroundColor}/>
