@@ -9,6 +9,7 @@ body{
   margin: 0;
   display: flex;
   justify-content: center;
+  padding: 0 10%;
 }
 
 header h1{
@@ -29,4 +30,78 @@ header p{
 header{
   margin-top: 5vh;
   text-align: center;
+}
+
+.gameResult{
+  background-color: #10A95B;
+  text-align: center;
+  color: #F9F4DA;
+  border-radius: 5px;
+  margin-top: 3vh;
+  width: 425px;
+  padding: 2vh 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5vh;
+}
+.gameResult h2{
+  margin: 0;
+  font-weight: 400;
+}
+.gameResult h2:nth-child(1){
+  font-size: 1.5rem;
+}
+.gameResult h2:nth-child(2){
+  font-size: 1rem;
+}
+
+.chipsContainer{
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 420px;
+  justify-content: center;
+  margin-top: 4vh;
+  gap: 10px;
+}
+
+.letterElementsContainer{
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  margin-top: 5vh
+}
+
+.letterElementsContainer span{
+  background-color: #323232;
+  color: #F9F4DA;
+  font-weight: 600;
+  font-size: 1.125rem;
+  padding: 10px 15px;
+  border-bottom: solid #F9F4DA;
+}
+
+.keyboardContainer{
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 600px;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8vh;
+}
+
+.keyboardButton{
+  background-color: #FCBA29;
+  width: 55px;
+  height: 55px;
+  font-size: 1.25rem;
+  font-family: 'Hanken Grotesk', sans-serif;
+  border: solid #D7D7D7;
+  border-radius: 5px;
+
+}
+
+main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
