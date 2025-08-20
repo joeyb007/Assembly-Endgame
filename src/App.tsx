@@ -2,13 +2,19 @@ import { useState } from 'react'
 import { languages } from './languages'
 import Chips from './components/chips'
 import './styles/App.css'
-import type {JSX} from 'react'
 import { clsx } from 'clsx'
 function App() {
-  const languageChips = languages.map(language => <Chips key={language.name} name={language.name} color={language.color} backgroundColor={language.backgroundColor}/>)
   const [currentWord, setCurrentWord] = useState<string>('react')
   const alphapbet = "abcdefghijklmnopqrstuvwxyz"
   const [guessedLetters, setGuessedLetters] = useState<string[]>([])
+
+  const wrongGuessesCount = guessedLetters.filter(letter => !currentWord.split('').includes(letter)).length
+  const languageChips = languages.map((language, index) => {
+    return <Chips key={language.name} 
+                  name={language.name} 
+                  color={language.color} 
+                  backgroundColor={language.backgroundColor}
+                  classes={clsx('chip', index < wrongGuessesCount && 'lost' )}/>})
   const letterElements = currentWord.split('').map(letter => <span key={letter}>{guessedLetters.includes(letter) ? letter.toUpperCase() : ''}</span>)
   // Function to handle the clicking of keyboard buttons (by updating the guessedLetters states)
   // Note that this function is called by an inline event listener within the JSX return,
