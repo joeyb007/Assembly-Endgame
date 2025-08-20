@@ -116,3 +116,24 @@ main{
 .incorrectGuess{
   background-color: #EC5D49;
 }
+
+.newGame{
+  margin-top: 4vh;
+  background-color: #11B5E5;
+  border: solid;
+  border-radius: 8px;
+  border-color: #D7D7D7;
+  font-family: 'Hanken Grotesk', sans-serif;
+  white-space: nowrap;
+  padding: 10px 60px;
+  font-size: 1rem; 
+  transition: filter 0.3s ease;
+  color: #282726;
+  font-weight: 600;
+
+
+}
+
+.newGame:hover{
+  filter: brightness(0.7)
+}

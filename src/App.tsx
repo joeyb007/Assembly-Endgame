@@ -9,6 +9,9 @@ function App() {
   const [guessedLetters, setGuessedLetters] = useState<string[]>([])
 
   const wrongGuessesCount = guessedLetters.filter(letter => !currentWord.split('').includes(letter)).length
+  const isGameLost = languages.length - 1 == wrongGuessesCount 
+  const isGameWon = currentWord.split('').every(correctLetter => guessedLetters.includes(correctLetter))
+  const isGameOver = isGameLost || isGameWon
   const languageChips = languages.map((language, index) => {
     return <Chips key={language.name} 
                   name={language.name} 
@@ -28,7 +31,7 @@ function App() {
     const isIncorrect = isGuessed && !currentWord.includes(letter)
     const classes = clsx('keyboardButton', isCorrect && 'correctGuess', isIncorrect && 'incorrectGuess')
     return (
-    <button onClick={() => handleKeyboardClick(letter)} 
+    <button onClick={isGameOver ? undefined : () => handleKeyboardClick(letter)}
             key={letter} 
             className={classes}>
               {letter.toUpperCase()}
@@ -53,7 +56,7 @@ function App() {
       <section className='keyboardContainer'>
         {keyboardButtonElements}
       </section>
-      
+      { isGameOver && <button className='newGame'>New Game</button>}
     </main>
   )
 }
