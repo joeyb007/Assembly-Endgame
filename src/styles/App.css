@@ -39,10 +39,12 @@ header{
   border-radius: 5px;
   margin-top: 3vh;
   width: 425px;
+  height: 50px;
   padding: 2vh 0;
   display: flex;
   flex-direction: column;
   gap: 0.5vh;
+  justify-content: center;
 }
 .gameResult h2{
   margin: 0;

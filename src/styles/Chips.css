@@ -18,3 +18,8 @@ span.chip.lost::before {
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: 3px;
 }
+
+.keyboardButton:disabled{
+    opacity: 0.5;
+    cursor: not-allowed;
+}
